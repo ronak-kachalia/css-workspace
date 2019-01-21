@@ -1,0 +1,201 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; -- removes padding and margin to any element so that it takes entire height
+                            and width as specified */
+    box-sizing: inherit; /* inherits from body */
+}
+
+html {
+    /* making global font-size in percentage so that it can be adjusted according to browsers default value */
+    font-size: 62.5%; /* 100% = 16 px, we want 10 px so, 10/16 = 62.5% */
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; /* Defines boldness of font */
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #777;
+    /*padding: 30px; -since converting this to rem */
+    padding: 3rem;
+    box-sizing: border-box; /* removes padding and margin to any element so that it takes entire height
+                            and width as specified */
+}
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-dark, 0.808),
+        rgba($color-primary, 0.808),
+        rgba($color-primary-light, 0.808)
+        ) , url(../img/hero.jpg); /* L-R = Top to bottom layer */
+    background-size: cover; /* property specifies the size of the background images */
+    background-position: top; /* whenever the viewport changes, the top of the image remains */
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* 75vh since we have used height as 95vh */
+}
+
+.header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+}
+
+.header__logo {
+    height: 3.5rem; /* width will be figured out by the browser and vice versa */
+}
+
+.header__text-box {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    /* left and right are in relation to parent element */
+    transform: translate(-50%,-50%); /* this is in relation to the text itself */
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+
+    backface-visibility: hidden; /* helps to remove distortion during animation */
+
+    margin-bottom: 2rem;
+}
+
+.heading-primary--main {
+    display: block; /* adds breaks before and after the element */
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+
+    /* 
+    animation-timing-function: ease / ease-in / ease-out / etc. -- specifies what should be the spped of the animation
+                                                                ease-out: initially fast and then gets slow
+    animation-iteration-count: 3; -- number of times the animation should happen
+    animation-delay: 3s; -- waits till the time specified and then it animates
+    */
+}
+
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+
+    animation-name: moveInRight;
+    animation-duration: 2s;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem); /* +ve : goes to right , -ve : goes to left */
+    }
+    /*
+    60% {
+        transform: rotate(120deg);
+    }
+    */
+    80% {
+        transform: translateX(2rem) /* rotate(180deg) */ ;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0); /* makes it look the way it was defined */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-2rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveUp {
+    0% {
+        opacity: 0;
+        transform: translateY(5rem);
+    }
+
+    80% {
+        transform: translateY(-.5rem)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0)
+    }
+}
+
+/* :link is a pseudo-class. pseudo-class are special states of a selector */
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem; /* 2 values: top-bottom left-right or  4 values: top,right,bottom,left */
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s ease;
+    position: relative;
+
+    animation-name: moveUp;
+    animation-duration: 2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+}
+/* when we click an element it goes to active state */
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+}
+
+.btn--white {
+    background-color: #fff;
+    color: #777;
+}
+
+/* pseudo-elements : virtual elements used to provide extra effects to an element */
+/*
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%; -- 100% of height of button 
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; -- defines the position of the elements one over other 
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+*/
