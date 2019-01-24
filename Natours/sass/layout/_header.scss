@@ -1,0 +1,33 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-dark, 0.808),
+        rgba($color-primary, 0.808),
+        rgba($color-primary-light, 0.808)
+        ) , url(../img/hero.jpg); // L-R = Top to bottom layer
+    background-size: cover; // property specifies the size of the background images
+    background-position: top; // whenever the viewport changes, the top of the image remains
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); // 75vh since we have used height as 95vh
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem; // width will be figured out by the browser and vice versa
+    }
+
+    &__text-box {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        // left and right are in relation to parent element
+        transform: translate(-50%,-50%); // this is in relation to the text itself
+        text-align: center;
+    }
+}

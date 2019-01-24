@@ -1,0 +1,20 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    //box-sizing: border-box; -- removes padding and margin to any element so that it takes entire height
+    // and width as specified 
+    box-sizing: inherit; // inherits from body 
+}
+
+html {
+    // this defines what 1 rem is
+    // making global font-size in percentage so that it can be adjusted according to browsers default value 
+    font-size: 62.5%; // 00% = 16 px, we want 10 px so, 10/16 = 62.5% 
+}
+
+body {
+    box-sizing: border-box; //removes padding and margin to any element so that it takes entire height
+                            // and width as specified
+}
