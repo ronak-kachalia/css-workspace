@@ -14,19 +14,14 @@ body {
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-10rem);
-    /* +ve : goes to right , -ve : goes to left */ }
-  /*
-    60% {
-        transform: rotate(120deg);
-    }
-    */
+    transform: translateX(-10rem); }
+  60% {
+    transform: rotate(120deg); }
   80% {
     transform: translateX(2rem); }
   100% {
     opacity: 1;
-    transform: translate(0);
-    /* makes it look the way it was defined */ } }
+    transform: translate(0); } }
 
 @keyframes moveInRight {
   0% {
@@ -82,10 +77,43 @@ body {
     animation-name: moveInRight;
     animation-duration: 2s; }
 
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: .2rem;
+  transition: all .2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(5deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 700; }
+
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 30px; }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
 .btn {
-  /* :link is a pseudo-class. pseudo-class are special states of a selector */
-  /* when we click an element it goes to active state */
-  /* pseudo-elements : virtual elements used to provide extra effects to an element */
   /*
     .btn::after {
         content: "";
@@ -101,13 +129,12 @@ body {
 
     .btn-white::after {
         background-color: #fff;
-    }
-    */ }
+    }*/ }
   .btn:link, .btn:visited {
+    font-size: 1.6rem;
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.5rem 4rem;
-    /* 2 values: top-bottom left-right or  4 values: top,right,bottom,left */
     display: inline-block;
     border-radius: 10rem;
     transition: all .2s ease;
@@ -124,63 +151,93 @@ body {
     background-color: #fff;
     color: #777; }
 
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px;
+  transition: all .3s; }
+
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transform: translateY(1px); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+    transition: all .2s;
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #55c57a;
+      /*outline vs border
+                both are nearly similar, but with outline we get additional features such as offset, which lets us
+                assign border from some distance to the actual border
+            */
+      transform: scale(1.05);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
 .header {
   height: 95vh;
   background-image: linear-gradient(to right bottom, rgba(40, 180, 133, 0.808), rgba(85, 197, 122, 0.808), rgba(126, 213, 111, 0.808)), url(../img/hero.jpg);
-  /* L-R = Top to bottom layer */
   background-size: cover;
-  /* property specifies the size of the background images */
   background-position: top;
-  /* whenever the viewport changes, the top of the image remains */
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /* 75vh since we have used height as 95vh */ }
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
   .header__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem; }
   .header__logo {
-    height: 3.5rem;
-    /* width will be figured out by the browser and vice versa */ }
+    height: 3.5rem; }
   .header__text-box {
     position: absolute;
     left: 50%;
     top: 40%;
-    /* left and right are in relation to parent element */
     transform: translate(-50%, -50%);
-    /* this is in relation to the text itself */
     text-align: center; }
 
-body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.7;
-  color: #777;
-  padding: 3rem; }
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc( ( 100% - 6rem ) / 2); }
 
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  margin-bottom: 2rem; }
-  .heading-primary--main {
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: 2s;
-    /* 
-        animation-timing-function: ease / ease-in / ease-out / etc. -- specifies what should be the spped of the animation
-                                                                    ease-out: initially fast and then gets slow
-        animation-iteration-count: 3; -- number of times the animation should happen
-        animation-delay: 3s; -- waits till the time specified and then it animates
-        */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    animation-name: moveInRight;
-    animation-duration: 2s; }
+.section-about {
+  background-color: #f7f7f7;
+  padding: 25rem 0;
+  margin-top: -20vh; }
