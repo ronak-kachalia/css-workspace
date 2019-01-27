@@ -1,5 +1,6 @@
 .btn {
     // :link is a pseudo-class. pseudo-class are special states of a selector
+    &,
     &:link,
     &:visited {
         font-size: $default-font-size;
@@ -13,14 +14,20 @@
 
         animation-name: moveUp;
         animation-duration: 2s;
+
+        // change for the <button> element
+        border:none;
+        cursor: pointer;
     }
 
-    &:hover {
+    &:hover { 
         transform: translateY(-3px);
         box-shadow: 0 1rem 2rem rgba($color-black,.2);
     }
     // when we click an element it goes to active state
-    &:active {
+    &:active,
+    &:focus { // focus is for button
+        outline: none; // for button
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black,.2);
     }
