@@ -5,8 +5,16 @@
     margin: 0 auto;
     // background-color: $bg-color;
 
+    @include respond(tab-port) {
+        max-width: 50rem;
+    }
+
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+        }
     }
 
     @include clearfix; // because when using chrome inspect, the row height appears 0 even when more than one divs are there
@@ -17,6 +25,15 @@
 
         &:not(:last-child){
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port) {
+            width: 100% !important;
         }
     }
 

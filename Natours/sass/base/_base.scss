@@ -11,10 +11,32 @@
 html {
     // this defines what 1 rem is
     // making global font-size in percentage so that it can be adjusted according to browsers default value 
-    font-size: 62.5%; // 00% = 16 px, we want 10 px so, 10/16 = 62.5% 
+    font-size: 62.5%; // 00% = 16 px, we want 10 px so, 10/16 = 62.5% . 1rem = 10px
+
+    // @include respond(phone) {
+    //     font-size: 50%;
+    // } // since for phone and tab-port we want 50%, media for phone is not required as tab-port applies for phone too
+
+    @include respond(tab-land) { // < 1200px
+        font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+    }
+
+    @include respond(tab-port) { // < 900px
+        font-size: 50%; // 1rem = 8px, 8/16 = 50%
+    }
+
+    @include respond(big-desktop) {
+        font-size: 75%; // 1 rem = 12px
+    }
 }
 
 body {
     box-sizing: border-box; //removes padding and margin to any element so that it takes entire height
                             // and width as specified
+    padding: 3rem;
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
+
 }

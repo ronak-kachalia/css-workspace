@@ -4,8 +4,6 @@ body {
     font-size: 1rem;
     line-height: 1.7;
     color: $color-grey-dark;
-    // padding: 30px; -since converting this to rem
-    padding: 3rem;
 }
 
 .heading-primary {
@@ -24,6 +22,11 @@ body {
     
         animation-name: moveInLeft;
         animation-duration: 2s;
+
+        @include respond(phone) {
+            letter-spacing: 1rem;
+            font-size: 5rem;
+        }
     
         /* 
         animation-timing-function: ease / ease-in / ease-out / etc. -- specifies what should be the spped of the animation
@@ -39,7 +42,13 @@ body {
         font-weight: 700;
         letter-spacing: 1.75rem;
         animation-name: moveInRight;
-        animation-duration: 2s; }
+        animation-duration: 2s; 
+
+        @include respond(phone) {
+            letter-spacing: .5rem;
+            font-size: 1rem;
+        }
+    }
 }
 
 .heading-secondary {
@@ -52,6 +61,14 @@ body {
     color: transparent;
     letter-spacing: .2rem;
     transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size: 2.5rem;
+    }
+
+    @include respond(phone) {
+        font-size: 2rem;
+    }
 
     &:hover {
         transform: skewY(2deg) skewX(5deg) scale(1.1);
