@@ -160,3 +160,12 @@
     }
 
 }
+
+
+// media query example for card 
+
+@media only screen and (max-width: 56.25em),
+    only screen and (hover: none) {
+        // hover none provides info whether the screen can perform hover or not for eg. touchscreen
+        // and thus we put the back side in the bottom of out front side
+    }
