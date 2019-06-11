@@ -1,5 +1,5 @@
 # css-workspace
-Detailed CSS & SCSS concepts,
+Detailed CSS, SASS and SCSS concepts,
 Animations,
 Responsive,
 Deployments
